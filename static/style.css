@@ -2,3 +2,45 @@ body {
 	background-image: url("http://www.ralphlauren.com/graphics/media/polo/polobar/img/12182014_polo_bar_gallery_fs_05.jpg");
 	background-size: cover;
 }
+.navbar {
+	background: #844A25;
+	opacity: .8;
+	font-size: 15px;
+	font-weight: bold;
+	border: 3px solid black;
+}
+.navbar li {
+	color: black;
+}
+#myModal {
+top:10%;
+outline: none;
+}
+div.background {
+    background: url(klematis.jpg) repeat;
+    border: 2px solid black;
+}
+
+div.transbox {
+    background-color: #844A25;
+    border: 1px solid black;
+    opacity: 0.7;
+}
+div.transbox h3 {
+	font-weight: bold;
+	color: #FFE4C4;
+}
+div.transbox h4 {
+	font-weight: bold;
+	color: #FFE4C4;
+}
+
+div.transbox p {
+	font-size: 15px;
+    margin: 0;
+    font-weight: bold;
+    color: #FFE4C4;
+}
+.results-list input {
+	display: inline-block;
+}

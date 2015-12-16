@@ -1,0 +1,31 @@
+
+<link rel="stylesheet" type="text/css" href='styles.css'>
+<link rel="stylesheet" type="text/css" href="style.css">
+
+<div class='results-list container-fluid'>
+	<div class='col-md-4 col-md-offset-4 transbox'>
+		<form method='POST' action='/results' class='text-center'>
+			<h3>What are you looking for?</h3>
+			<input type="checkbox" name="bar" value="bar">Bars</input>
+			<input type="checkbox" name="brewery" value="brewery">Breweries</input>
+			<input type="checkbox" name="distillery" value="distillery">Distillery</input><br>
+			<input type="checkbox" name="liquor-store" value="liquor-store">Liquor Store</input>
+			<input type="checkbox" name="gas-station" value="gas-station">Gas Station</input>
+			<input type="checkbox" name="grocery-store" value="grocery-store">Grocery Store</input><br>
+			<input type='submit' value='submit' class='btn btn-danger'>
+		</form>
+	</div>
+</div>
+
+<div class='col-md-5 col-md-offset-1' id='map'></div>
+
+<div class="col-md-5 transbox" id='results'>
+	<ul class='results list list-unstyled' id="listed">
+		<li><h3 class='text-center'>Results!</h3></li>
+	</ul>
+</div>
+
+
+<script type="text/javascript" src="map.js"></script>
+<script async defer
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD4X_w0KDPTqdbMvTfRBhcyvjEKRmvQ7o0&callback=initMap"></script>

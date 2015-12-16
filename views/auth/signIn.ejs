@@ -1,0 +1,23 @@
+<link rel="stylesheet" type="text/css" href="../style.css">
+<div class="modal show" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span></button>
+				<h4 class="modal-title" id="myModalLabel">Sign In!</h4>
+			</div>
+			<div class="modal-body modalForm">
+				<form class="form text-center" method='post' action='/auth/signIn'>
+				  <input type="email" class='form-control' name="email" placeholder="Enter email">
+				  <input type="password" class='form-control' name="password" placeholder='Enter Password'>
+				  <br>
+				  <input type='submit' values='Log in' class='btn btn-primary'>
+				</form>
+			</div>
+			<div class="modal-footer">
+				<a href="/auth/signUp" class="btn btn-danger" data-dismiss="modal">Not a member? Sign up</a>
+
+			</div>
+		</div>
+	</div>
+</div>
