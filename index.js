@@ -51,7 +51,7 @@ app.get('/favorites', function(req, res) {
 });
 //Search/Results/Maps page
 app.get('/results', function(req, res) {
-	res.render('results');
+		res.render('results')
 });
 //Should take in search criteria
 app.post('/results', function(req, res) {

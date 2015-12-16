@@ -4,14 +4,14 @@
 
 <div class='results-list container-fluid'>
 	<div class='col-md-4 col-md-offset-4 transbox'>
-		<form method='POST' action='/results' class='text-center'>
+		<form method='POST' id='searchTerms' action='/results' class='text-center'>
 			<h3>What are you looking for?</h3>
-			<input type="checkbox" name="bar" value="bar">Bars</input>
-			<input type="checkbox" name="brewery" value="brewery">Breweries</input>
-			<input type="checkbox" name="distillery" value="distillery">Distillery</input><br>
-			<input type="checkbox" name="liquor-store" value="liquor-store">Liquor Store</input>
-			<input type="checkbox" name="gas-station" value="gas-station">Gas Station</input>
-			<input type="checkbox" name="grocery-store" value="grocery-store">Grocery Store</input><br>
+			<input type="checkbox" id='bar' name="bar" value="bar">Bars</input>
+			<input type="checkbox" id="brewery" name="brewery" value="brewery">Breweries</input>
+			<input type="checkbox" id="distillery" name="distillery" value="distillery">Distillery</input><br>
+			<input type="checkbox" id="liquorStore" name="liquorStore" value="liquor Store">Liquor Store</input>
+			<input type="checkbox" id="gasStation" name="gasStation" value="gas station">Gas Station</input>
+			<input type="checkbox" id="groceryStore" name="groceryStore" value="grocery store">Grocery Store</input><br>
 			<input type='submit' value='submit' class='btn btn-danger'>
 		</form>
 	</div>
@@ -25,7 +25,6 @@
 	</ul>
 </div>
 
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 <script type="text/javascript" src="map.js"></script>
-<script async defer
-      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD4X_w0KDPTqdbMvTfRBhcyvjEKRmvQ7o0&callback=initMap"></script>
+ <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDdH5iPS4QmHCEJh3qrsFYxDyfLzyQzB_A&signed_in=true&libraries=places&callback=initMap" async defer></script>
