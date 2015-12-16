@@ -21,25 +21,33 @@ app.use(session({
 	saveUninitialized: true
 }));
 
-app.use(function(req, res, next) {
-	if(req.session.user) {
-		db.user.findById(req.session.user).then(function(user) {
-			req.currentUser = user;
-			next();
-		});
-	} else {
-		req.currentUser = false;
-		next();
-	}
-})
+// app.use(function(req, res, next) {
+// 	if(req.session.user) {
+// 		console.lo('MISSSS');
+// 		db.user.findById(req.session.user).then(function(user) {
+// 			req.currentUser = user;
+// 			next();
+// 		});
+// 	} else {
+// 		console.log('HITTT')
+// 		req.currentUser = false;
+// 		next();
+// 	}
+// })
 
 //Home Page/Login Page 
 app.get('/', function(req, res) {
   res.render('index');
 });
-//Favorites Page...you know for like favorites and shit
+//Favorites Page...you know for like favorites and stuff
 app.get('/favorites', function(req, res) {
-	res.render('favorites', {favorite: favorites});
+	console.log(req.currentUser);
+	if(req.currentUser) {
+		res.render('/favorites');
+	} else {
+		console.log('THIS SHOULD NOT HAPPEN')
+		res.redirect('/')
+	}
 });
 //Search/Results/Maps page
 app.get('/results', function(req, res) {
@@ -47,7 +55,7 @@ app.get('/results', function(req, res) {
 });
 //Should take in search criteria
 app.post('/results', function(req, res) {
-
+	console.log(req.body)
 });
 
 
