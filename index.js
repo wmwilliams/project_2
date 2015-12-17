@@ -21,19 +21,19 @@ app.use(session({
 	saveUninitialized: true
 }));
 
-// app.use(function(req, res, next) {
-// 	if(req.session.user) {
-// 		console.lo('MISSSS');
-// 		db.user.findById(req.session.user).then(function(user) {
-// 			req.currentUser = user;
-// 			next();
-// 		});
-// 	} else {
-// 		console.log('HITTT')
-// 		req.currentUser = false;
-// 		next();
-// 	}
-// })
+app.use(function(req, res, next) {
+	if(req.session.user) {
+		console.lo('MISSSS');
+		db.user.findById(req.session.user).then(function(user) {
+			req.currentUser = user;
+			next();
+		});
+	} else {
+		console.log('HITTT')
+		req.currentUser = false;
+		next();
+	}
+})
 
 //Home Page/Login Page 
 app.get('/', function(req, res) {
