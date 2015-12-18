@@ -5,8 +5,8 @@
 <div class="col-md-8 col-md-offset-2 transbox text-center" id='results'>
 <h2>Your favorite drinking spots!</h2>
 <% favorites.forEach(function(favorite) { %>
-		<h3><%= favorite.name %></h3><button type='btn btn-warning' id='delete'>Delete</button>
-
-	    <p><%= favorite.comment %> </p><button type='btn btn-warning' id='edit'>Edit Comment</button>
+		<h3 class='text-left'><%= favorite.name %></h3>
+	    <p><%= favorite.comment %> </p><a href="/edit/<%= favorite.id %>" class="btn btn-primary pull-left">Edit Comment</a><a href="/favorites/<%= favorite.name %>" class="btn btn-primary delete-btn pull-right">Remove</a><br><hr>
 
 <% }); %>
+

@@ -33,8 +33,6 @@ app.use(function(req, res, next) {
 })
 app.use(function(req,res,next){
   res.locals.currentUser = req.currentUser;
-  // res.locals.alerts = req.flash();
-
   next();
 })
 
@@ -44,17 +42,32 @@ app.get('/', function(req, res) {
   res.render('index');
 });
 
-//Favorites Page...you know for like favorites and stuff
+//Gets favorites, but only for logged in user
 app.get('/favorites', function(req, res) {
-	console.log('session users = '+req.session.user)
 	if(typeof req.session.user === 'undefined') {
 		res.redirect('/');
 		return
 	} else {
-		db.favorite.findAll().then(function(favorites) {
-			res.render('favorites', {favorites: favorites})
+		db.user.findOne().then(function(user) {
+			console.log('WHAT THE FUCK')
+			user.getFavorites().then(function(favorites) {
+				res.render('favorites', {favorites: favorites})
+			})
 		})
 	}
+});
+
+//Delete route for favorites
+app.get('/favorites/:name', function(req, res) {
+	db.favorite.destroy({
+		where : {
+			name : req.params.name
+		}
+	}).then(function() {
+		res.redirect('/favorites')
+	}).catch(function(e) {
+		res.send({'msg': 'error', 'error': e})
+	});
 });
 
 //Search/Results/Maps page
@@ -68,6 +81,14 @@ app.get('/results', function(req, res) {
 	}
 });
 
+//FUCK EVERYTHING
+app.get('/edit/:id', function(req, res) {
+	test = req.params.id;
+	db.favorite.findOne({where : {id : test}}).then(function(favorites) {
+		res.render('edit', {favorites: favorites})
+	})
+});
+
 //Takes location title and takes you to comment page
 app.post('/results', function(req, res) {
 	console.log('hello');
@@ -75,11 +96,12 @@ app.post('/results', function(req, res) {
 	res.render('notes', {title: req.body.title})
 });
 
-//Posts takes title and comments and adds it to db
+// Posts takes title and comments and adds it to db
 app.post('/notes', function(req, res) {
 	var newFav = {
 		name: req.body.title,
-		comment : req.body.comment
+		comment : req.body.comment,
+		userId : req.session.user
 	}
 	db.favorite.create(newFav).then(function() {
 		res.redirect('/favorites')

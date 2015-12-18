@@ -60,7 +60,7 @@ router.post('/signUp', function(req, res) {
 				console.log(err);
 			}
 			req.session.user = user.id;
-			res.redirect('/');
+			res.render('results');
 		});
 	}
 });
