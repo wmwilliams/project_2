@@ -1,0 +1,19 @@
+<link rel="stylesheet" type="text/css" href="../style.css">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span></button>
+				<h4 class="modal-title" id="myModalLabel">Register now!</h4>
+			</div>
+			<div class="modal-body modalForm">
+				<form class="form text-center" method='post' action='/auth/signUp'>
+				  <input type="email" class='form-control' name="email" placeholder="Enter email">
+				  <input type="password" class='form-control' name="password" placeholder='Enter Password'>  
+				  <input type="password" class='form-control' name="password2" placeholder='Re-enter Password'>
+				  <input type="number" class='form-control' name="age" placeholder='Must be 21+'>
+				  <br>
+				  <input type="submit" value='Sign up' class='btn btn-primary'>
+				</form>
+			</div>
+		</div>
+	</div>

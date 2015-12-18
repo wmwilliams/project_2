@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		  <!-- Latest compiled and minified CSS & JS -->
+		<link rel="stylesheet" media="screen" href="//netdna.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+		<link rel="stylesheet" type="text/css" href="style.css">
+		<title>Drink Location Finder</title>
+	</head>
+	<body>
+
+
+		<nav class="navbar navbar-default navvy">
+			<div class="container-fluid">
+				<div>
+					<ul class="nav navbar-nav navbar-right">
+						<li><a href="/">Home</a></li>
+						<li><a href="/results">Search</a></li>
+						<li><a href="/favorites">Favorites</a></li>
+						<li><a href="/auth/signIn">Log in</a></li>
+						<li><a href="/auth/logout">Log out</a></li>
+						<li><a href="/auth/signup">Register</a></li>
+
+					</ul>
+				</div>
+			</div>
+		</nav>
+
+
+		<div class="container">
+		
+		  <%- body %>
+
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+		  <script src="//netdna.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+		</div>
+		<!-- <script type="text/javascript" src="/js/script.js"></script>
+		 -->
+	</body>
+</html>

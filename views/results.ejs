@@ -1,0 +1,33 @@
+<link rel="stylesheet" type="text/css" href="style.css">
+
+<div class='results-list container-fluid'>
+	<div class='col-md-4 col-md-offset-4 transbox'>
+		<form method='POST' id='searchTerms' action='/results' class='text-center'>
+			<h3>What are you looking for?</h3>
+
+			<input type="checkbox" id='bar' name="bar" value="bar">Bar</input>
+
+			<input type="checkbox" id="brewery" name="brewery" value="restaurant">Resturaunt</input>
+
+			<input type="checkbox" id="liquorStore" name="liquorStore" value="liquor_store">Liquor Store</input>
+
+			<input type="checkbox" id="gasStation" name="gasStation" value="gas_station">Gas Station</input><br>
+
+			<input type="checkbox" id="groceryStore" name="groceryStore" value="grocery_or_supermarket">Grocery Store</input>
+
+			<input type="checkbox" id="hospital" name="hospital" value="hospital">Hospital</input>
+		</form>
+	</div>
+</div>
+
+<div class='col-md-5 col-md-offset-1' id='map'></div>
+
+<div class="col-md-5 transbox" id='results'>
+	<h3 class='text-center'>Results!</h3>
+	<ul class='results-list list-unstyled' id="listed">
+	</ul>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script type="text/javascript" src="map.js"></script>
+ <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDdH5iPS4QmHCEJh3qrsFYxDyfLzyQzB_A&signed_in=true&libraries=places&callback=initMap" async defer></script>
