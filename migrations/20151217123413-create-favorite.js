@@ -11,8 +11,11 @@ module.exports = {
       name: {
         type: Sequelize.STRING
       },
-      location: {
+      comment: {
         type: Sequelize.STRING
+      },
+      userId: {
+        type: Sequelize.INTEGER
       },
       createdAt: {
         allowNull: false,

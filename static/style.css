@@ -34,13 +34,19 @@ div.transbox h4 {
 	font-weight: bold;
 	color: #FFE4C4;
 }
-
 div.transbox p {
 	font-size: 15px;
     margin: 0;
     font-weight: bold;
     color: #FFE4C4;
 }
+div.transbox li p {
+	font-size: 12px;
+}
 .results-list input {
 	display: inline-block;
+}
+#map {
+	height: 500px;
+	width: 500px;
 }

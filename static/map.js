@@ -5,10 +5,12 @@ $('#bar').change(function() {
 		searchTerms.push($('#bar').val());
 		initMap();
 		searchResults = [];
+		$("#listed").empty();
 	} else if(!this.checked) {
 		searchTerms.splice(this, 1);
 		initMap();
 		searchResults = [];
+		$("#listed").empty();
 	}
 });
 $('#brewery').change(function() {
@@ -16,10 +18,12 @@ $('#brewery').change(function() {
 		searchTerms.push($('#brewery').val());
 		initMap();
 		searchResults = [];
+		$("#listed").empty();
 	} else if(!this.checked) {
 		searchTerms.splice(this, 1);
 		initMap();
 		searchResults = [];
+		$("#listed").empty();
 	}
 });
 $('#liquorStore').change(function() {
@@ -27,10 +31,12 @@ $('#liquorStore').change(function() {
 		searchTerms.push($('#liquorStore').val());
 		initMap();
 		searchResults = [];
+		$("#listed").empty();
 	} else if(!this.checked) {
 		searchTerms.splice(this, 1);
 		initMap();
 		searchResults = [];
+		$("#listed").empty();
 	}
 });
 $('#gasStation').change(function() {
@@ -38,10 +44,12 @@ $('#gasStation').change(function() {
 		searchTerms.push($('#gasStation').val());
 		initMap();
 		searchResults = [];
+		$("#listed").empty();
 	} else if(!this.checked) {
 		searchTerms.splice(this, 1);
 		initMap();
 		searchResults = [];
+		$("#listed").empty();
 	}
 });
 $('#groceryStore').change(function() {
@@ -49,10 +57,12 @@ $('#groceryStore').change(function() {
 		searchTerms.push($('#groceryStore').val());
 		initMap();
 		searchResults = [];
+		$("#listed").empty();
 	} else if(!this.checked) {
 		searchTerms.splice(this, 1);
 		initMap();
 		searchResults = [];
+		$("#listed").empty();
 	}
 });
 var map;
@@ -73,10 +83,8 @@ var initMap = function() {
 			console.log(initialLoc + 'CHECK THIS')
 		});
 	}
-
+	// says position is undefined? wtf it works in somebodies jsfiddle....bs
 	// var latlng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
-
-
 	var request = {
 		location : seattle,
 		radius : '500',
@@ -91,6 +99,7 @@ function callback(results, status) {
     for (var i = 0; i < results.length; i++) {
       createMarker(results[i]);
       searchResults.push(results[i].name);
+      createLi(searchResults[i])
     }
   }
 };
@@ -101,18 +110,16 @@ function createMarker(place) {
     map: map,
     position: placeLoc
   });
-
   google.maps.event.addListener(marker, 'click', function() {
     infowindow.setContent(place.name);
     infowindow.open(map, this);
   });
 };
-// var html = '<li><p class="todo-item">' + name + '</p><button type="button" class="delete-button">Delete</button><button type="button" class="edit-button">Edit</button></li>';
+var createLi = function(text) {
+	var html = '<li class="inline"><form method="POST" action="/results"><p>' + text + '</p><input type="hidden" name=title value="' + text + '"><button type="submit" class="btn btn-warning">Add to favorites!</button></form></li>';
 
-// searchResults.forEach(function(name) {
-// 		$('#results-list').append(html);
-// 		console.log('were here')
-// });
+	$('#listed').append(html);
+}
 
 
 

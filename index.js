@@ -12,7 +12,6 @@ app.use(ejsLayouts);
 app.use(express.static(__dirname + '/static'));
 app.use(bodyParser.urlencoded({extended: false}));
 
-app.use('/auth', require('./controllers/auth.js'));
 
 
 app.use(session({
@@ -23,42 +22,72 @@ app.use(session({
 
 app.use(function(req, res, next) {
 	if(req.session.user) {
-		console.lo('MISSSS');
 		db.user.findById(req.session.user).then(function(user) {
 			req.currentUser = user;
 			next();
 		});
 	} else {
-		console.log('HITTT')
 		req.currentUser = false;
 		next();
 	}
 })
+app.use(function(req,res,next){
+  res.locals.currentUser = req.currentUser;
+  // res.locals.alerts = req.flash();
+
+  next();
+})
 
 //Home Page/Login Page 
 app.get('/', function(req, res) {
+  console.log(req.session.currentUser)
   res.render('index');
 });
+
 //Favorites Page...you know for like favorites and stuff
 app.get('/favorites', function(req, res) {
-	console.log(req.currentUser);
-	if(req.currentUser) {
-		res.render('/favorites');
+	console.log('session users = '+req.session.user)
+	if(typeof req.session.user === 'undefined') {
+		res.redirect('/');
+		return
 	} else {
-		console.log('THIS SHOULD NOT HAPPEN')
-		res.redirect('/')
+		db.favorite.findAll().then(function(favorites) {
+			res.render('favorites', {favorites: favorites})
+		})
 	}
 });
+
 //Search/Results/Maps page
 app.get('/results', function(req, res) {
-		res.render('results')
+	console.log('session users = '+req.session.user)
+	if(typeof req.session.user === 'undefined') {
+		res.redirect('/');
+		return
+	} else {
+		res.render('results');
+	}
 });
-//Should take in search criteria
+
+//Takes location title and takes you to comment page
 app.post('/results', function(req, res) {
-	console.log(req.body)
+	console.log('hello');
+	console.log(req.body.title)
+	res.render('notes', {title: req.body.title})
+});
+
+//Posts takes title and comments and adds it to db
+app.post('/notes', function(req, res) {
+	var newFav = {
+		name: req.body.title,
+		comment : req.body.comment
+	}
+	db.favorite.create(newFav).then(function() {
+		res.redirect('/favorites')
+	})
 });
 
 
+app.use('/auth', require('./controllers/auth.js'));
 
 
 

@@ -14,13 +14,11 @@ module.exports = function(sequelize, DataTypes) {
       },
       authenticate: function(email, password, callback) {
         this.find({where: {email: email}}).then(function(user) {
-
           if(user) {
             bcrypt.compare(password, user.password, function(err, result) {
               if(err) {
                 callback(err);
               } else {
-                //if result is true pass user obj, otherwise false
                 callback(null, result ? user : false);
               }
             });
@@ -31,14 +29,15 @@ module.exports = function(sequelize, DataTypes) {
     hooks: {
       beforeCreate: function(user, option, callback) {
         if(user.password) {
-          bcrypt.hash(user.password, 11, function(err, hash) {
+          bcrypt.hash(user.password, 10, function(err, hash) {
             if(err) {
               return callback(err);
             }
             user.password = hash;
             callback(null, user);
           });
-        } else {
+        } else{
+          //TODO error reporting
           callback(null, user);
         }
       }

@@ -5,30 +5,30 @@ var session = require('express-session');
 var bcrypt = require('bcrypt');
 var bodyParser = require('body-parser');
 
-router.get('/signup', function(req, res) {
-	res.render('auth/signUp');
-});
 
 router.use(bodyParser.urlencoded({extended: false}));
 
-router.use(session({
-	secret: 'super duper secret words',
-	resave: false,
-	saveUninitialized: true
-}));
+// router.use(session({
+// 	secret: 'super duper secret words',
+// 	resave: false,
+// 	saveUninitialized: true
+// }));
 
-router.use(function(req, res, next) {
-	if(req.session.user) {
-		db.user.findById(req.session.user).then(function(user) {
-			req.currentUser = user;
-			next();
-		});
-	} else {
-		req.currentUser = false;
-		next();
-	}
-})
+// router.use(function(req, res, next) {
+// 	if(req.session.user) {
+// 		db.user.findById(req.session.user).then(function(user) {
+// 			req.currentUser = user;
+// 			next();
+// 		});
+// 	} else {
+// 		req.currentUser = false;
+// 		next();
+// 	}
+// })
 
+router.get('/signup', function(req, res) {
+	res.render('auth/signUp');
+});
 
 router.post('/signUp', function(req, res) {
 	if(req.body.password != req.body.password2) {
@@ -89,7 +89,7 @@ router.post('/signIn', function(req, res) {
 
 router.get('/logout', function(req, res) {
 	console.log(req.session);
-	req.session.user = false;
+	req.session.user = undefined;
 	console.log('Logging out');
 	res.redirect('/');
 });
