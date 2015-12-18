@@ -36,6 +36,20 @@ var util = require('util')
  *   }
  * })
  * ```
+ * There may be times when you want to generate your own UUID conforming to some other algorithm. This is accomplised
+ * using the defaultValue property as well, but instead of specifying one of the supplied UUID types, you return a value 
+ * from a function.
+ * ```js
+ * sequelize.define('model', {
+ *   uuid: {
+ *     type: DataTypes.UUID,
+ *     defaultValue: function() {
+ *       return generateMyId()
+ *     },
+ *     primaryKey: true
+ *   }
+ * })
+ * ```
  *
  * @class DataTypes
  */
@@ -628,7 +642,7 @@ RANGE.prototype.validate = function(value) {
 
 
 /**
- * A column storing a unique univeral identifier. Use with `UUIDV1` or `UUIDV4` for default values.
+ * A column storing a unique universal identifier. Use with `UUIDV1` or `UUIDV4` for default values.
  * @property UUID
  */
 var UUID = ABSTRACT.inherits();
@@ -707,8 +721,8 @@ UUIDV4.prototype.validate = function(value) {
  * ```
  *
  * VIRTUAL also takes a return type and dependency fields as arguments
- * If a virtual attribute is present in `attributes` it will automatically pull in the extra fields aswell.
- * Return type is mostly usefull for setups that rely on types like GraphQL.
+ * If a virtual attribute is present in `attributes` it will automatically pull in the extra fields as well.
+ * Return type is mostly useful for setups that rely on types like GraphQL.
  * ```js
  * {
  *   active: {
