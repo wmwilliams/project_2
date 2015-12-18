@@ -48,7 +48,7 @@ app.get('/favorites', function(req, res) {
 		res.redirect('/');
 		return
 	} else {
-		db.user.findOne().then(function(user) {
+		db.user.findOne({where: {id: req.session.user}}).then(function(user) {
 			console.log('WHAT THE FUCK')
 			user.getFavorites().then(function(favorites) {
 				res.render('favorites', {favorites: favorites})
@@ -142,4 +142,10 @@ app.use('/auth', require('./controllers/auth.js'));
 
 
 
-app.listen(3000);
+
+app.listen(process.env.PORT || 3000);
+
+
+
+
+

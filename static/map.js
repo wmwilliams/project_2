@@ -65,6 +65,15 @@ $('#groceryStore').change(function() {
 		$("#listed").empty();
 	}
 });
+
+if(navigator.geolocation) {
+	navigator.geolocation.getCurrentPosition(function(position) {
+		initialLoc = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+		map.setCenter(initialLoc);
+		console.log(initialLoc + 'CHECK THIS')
+	});
+}
+
 var map;
 var initialLoc;
 var initMap = function() {
@@ -76,17 +85,17 @@ var initMap = function() {
 		zoom : 15
 	});
 
-	if(navigator.geolocation) {
-		navigator.geolocation.getCurrentPosition(function(position) {
-			initialLoc = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
-			map.setCenter(initialLoc);
-			console.log(initialLoc + 'CHECK THIS')
-		});
-	}
+	// if(navigator.geolocation) {
+	// 	navigator.geolocation.getCurrentPosition(function(position) {
+	// 		initialLoc = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+	// 		map.setCenter(initialLoc);
+	// 		console.log(initialLoc + 'CHECK THIS')
+	// 	});
+	// }
 	// says position is undefined? wtf it works in somebodies jsfiddle....bs
 	// var latlng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
 	var request = {
-		location : seattle,
+		location : initialLoc,
 		radius : '500',
 		types : searchTerms
 	}
