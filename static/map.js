@@ -95,7 +95,7 @@ var initMap = function() {
 	// says position is undefined? wtf it works in somebodies jsfiddle....bs
 	// var latlng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
 	var request = {
-		location : seattle,
+		location : initialLoc,
 		radius : '500',
 		types : searchTerms
 	}
