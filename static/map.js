@@ -66,11 +66,11 @@ $('#groceryStore').change(function() {
 	}
 });
 
-// navigator.geolocation.getCurrentPosition(function(position) {
-// 	initialLoc = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
-// 	map.setCenter(initialLoc);
-// 	console.log(initialLoc + 'CHECK THIS')
-// )};
+navigator.geolocation.getCurrentPosition(function(position) {
+	initialLoc = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+	map.setCenter(initialLoc);
+	console.log(initialLoc + 'CHECK THIS')
+)};
 
 
 var map;
