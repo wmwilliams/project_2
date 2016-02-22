@@ -66,13 +66,12 @@ $('#groceryStore').change(function() {
 	}
 });
 
-if(navigator.geolocation) {
-	navigator.geolocation.getCurrentPosition(function(position) {
-		initialLoc = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
-		map.setCenter(initialLoc);
-		console.log(initialLoc + 'CHECK THIS')
-	});
-}
+// navigator.geolocation.getCurrentPosition(function(position) {
+// 	initialLoc = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+// 	map.setCenter(initialLoc);
+// 	console.log(initialLoc + 'CHECK THIS')
+// )};
+
 
 var map;
 var initialLoc;
@@ -85,15 +84,14 @@ var initMap = function() {
 		zoom : 15
 	});
 
-	// if(navigator.geolocation) {
-	// 	navigator.geolocation.getCurrentPosition(function(position) {
-	// 		initialLoc = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
-	// 		map.setCenter(initialLoc);
-	// 		console.log(initialLoc + 'CHECK THIS')
-	// 	});
-	// }
-	// says position is undefined? wtf it works in somebodies jsfiddle....bs
-	// var latlng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+	if(navigator.geolocation) {
+		navigator.geolocation.getCurrentPosition(function(position) {
+			initialLoc = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+			map.setCenter(initialLoc);
+			console.log(initialLoc + 'CHECK THIS')
+		});
+	}
+	var latlng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
 	var request = {
 		location : initialLoc,
 		radius : '500',

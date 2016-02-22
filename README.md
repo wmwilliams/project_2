@@ -18,7 +18,7 @@ TECH USED
 TO-INSTALL LOCALLY
 	clone this repo and do an npm install
 	then sequelize db:migrate i think
-	try that.....if it doesnt work then just go and look at it online
+
 
 
 HOSTED AT
