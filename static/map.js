@@ -79,9 +79,8 @@ var initMap = function() {
 	navigator.geolocation.getCurrentPosition(function(position) {
 	initialLoc = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
 	map.setCenter(initialLoc);
-	console.log('CHECK THIS' + typeof initialLoc)
+	console.log(initialLoc)
 	});
-	// var seattle = new google.maps.LatLng(47.6078762, -122.3359599);
 
 
 	map = new google.maps.Map(document.getElementById('map'), {
@@ -109,9 +108,9 @@ var initMap = function() {
 function callback(results, status) {
   if (status === google.maps.places.PlacesServiceStatus.OK) {
     for (var i = 0; i < results.length; i++) {
-      createMarker(results[i]);
       searchResults.push(results[i].name);
       createLi(searchResults[i])
+      createMarker(results[i]);
     }
   }
 };
