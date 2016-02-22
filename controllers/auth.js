@@ -8,24 +8,6 @@ var bodyParser = require('body-parser');
 
 router.use(bodyParser.urlencoded({extended: false}));
 
-// router.use(session({
-// 	secret: 'super duper secret words',
-// 	resave: false,
-// 	saveUninitialized: true
-// }));
-
-// router.use(function(req, res, next) {
-// 	if(req.session.user) {
-// 		db.user.findById(req.session.user).then(function(user) {
-// 			req.currentUser = user;
-// 			next();
-// 		});
-// 	} else {
-// 		req.currentUser = false;
-// 		next();
-// 	}
-// })
-
 router.get('/signup', function(req, res) {
 	res.render('auth/signUp');
 });

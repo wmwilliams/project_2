@@ -66,17 +66,22 @@ $('#groceryStore').change(function() {
 	}
 });
 
-navigator.geolocation.getCurrentPosition(function(position) {
-	initialLoc = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
-	map.setCenter(initialLoc);
-	console.log(initialLoc + 'CHECK THIS')
-)};
+// navigator.geolocation.getCurrentPosition(function(position) {
+// 	initialLoc = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+// 	map.setCenter(initialLoc);
+// 	console.log(initialLoc + 'CHECK THIS')
+// });
 
 
 var map;
 var initialLoc;
 var initMap = function() {
-	var seattle = new google.maps.LatLng(47.6078762, -122.3359599);
+	navigator.geolocation.getCurrentPosition(function(position) {
+	initialLoc = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+	map.setCenter(initialLoc);
+	console.log('CHECK THIS' + typeof initialLoc)
+	});
+	// var seattle = new google.maps.LatLng(47.6078762, -122.3359599);
 
 
 	map = new google.maps.Map(document.getElementById('map'), {
@@ -84,14 +89,14 @@ var initMap = function() {
 		zoom : 15
 	});
 
-	if(navigator.geolocation) {
-		navigator.geolocation.getCurrentPosition(function(position) {
-			initialLoc = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
-			map.setCenter(initialLoc);
-			console.log(initialLoc + 'CHECK THIS')
-		});
-	}
-	var latlng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+	// if(navigator.geolocation) {
+	// 	navigator.geolocation.getCurrentPosition(function(position) {
+	// 		initialLoc = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+	// 		map.setCenter(initialLoc);
+	// 		console.log(initialLoc + 'CHECK THIS')
+	// 	});
+	// }
+	// var latlng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
 	var request = {
 		location : initialLoc,
 		radius : '500',

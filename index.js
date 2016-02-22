@@ -84,6 +84,7 @@ app.get('/results', function(req, res) {
 //FUCK EVERYTHING
 app.get('/edit/:id', function(req, res) {
     work = parseInt(req.params.id);
+    console.log("TTTTTTTTTTTTTTTTTTTTTTTTTTT" + work);
     db.favorite.findOne({where : {id : work}}).then(function(favorites) {
         res.render('edit', {favorites: favorites}).then(function(){
             db.destroy({where: {id: work}})
@@ -108,7 +109,7 @@ app.post('/edit', function(req, res) {
         if(err.message) {
             console.log(err);
         } else {
-            console.log('No error')
+            console.log('UNDEFINED I HOPE' + err)
         }
         req.session.user = user.id;
         res.render('favorites');
@@ -117,6 +118,7 @@ app.post('/edit', function(req, res) {
 
 //Takes location title and takes you to comment page
 app.post('/results', function(req, res) {
+    console.log('hello');
     console.log(req.body.title)
     res.render('notes', {title: req.body.title})
 });
