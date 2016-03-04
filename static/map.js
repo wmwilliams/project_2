@@ -66,25 +66,30 @@ $('#groceryStore').change(function() {
 	}
 });
 
-navigator.geolocation.getCurrentPosition(function(position) {
-	initialLoc = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
-	map.setCenter(initialLoc);
-	console.log(initialLoc + 'CHECK THIS')
-}());
+// navigator.geolocation.getCurrentPosition(function(position) {
+// 	initialLoc = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+// 	map.setCenter(initialLoc);
+// 	console.log(initialLoc + 'CHECK THIS')
+// });
 
-
+var latLng;
 var map;
 var initialLoc;
 var initMap = function() {
 	navigator.geolocation.getCurrentPosition(function(position) {
-	// initialLoc = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
-	map.setCenter(initialLoc);
-	console.log(initialLoc)
+		initialLoc = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+		map.setCenter(initialLoc);
+		latLng = {
+			lat: position.coords.latitude,
+			lng: position.coords.longitude
+		};
+		console.log(position.coords.latitude);
+		console.log(position.coords.longitude)
 	});
 
 
 	map = new google.maps.Map(document.getElementById('map'), {
-		center : {lat: 47.6078762, lng: -122.3359599},
+		center : latLng,
 		zoom : 15
 	});
 
