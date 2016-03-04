@@ -65,10 +65,22 @@ $('#groceryStore').change(function() {
 		$("#listed").empty();
 	}
 });
+
+navigator.geolocation.getCurrentPosition(function(position) {
+	initialLoc = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+	map.setCenter(initialLoc);
+	console.log(initialLoc + 'CHECK THIS')
+}());
+
+
 var map;
 var initialLoc;
 var initMap = function() {
-	var seattle = new google.maps.LatLng(47.6078762, -122.3359599);
+	navigator.geolocation.getCurrentPosition(function(position) {
+	// initialLoc = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+	map.setCenter(initialLoc);
+	console.log(initialLoc)
+	});
 
 
 	map = new google.maps.Map(document.getElementById('map'), {
@@ -76,17 +88,16 @@ var initMap = function() {
 		zoom : 15
 	});
 
-	if(navigator.geolocation) {
-		navigator.geolocation.getCurrentPosition(function(position) {
-			initialLoc = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
-			map.setCenter(initialLoc);
-			console.log(initialLoc + 'CHECK THIS')
-		});
-	}
-	// says position is undefined? wtf it works in somebodies jsfiddle....bs
+	// if(navigator.geolocation) {
+	// 	navigator.geolocation.getCurrentPosition(function(position) {
+	// 		initialLoc = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+	// 		map.setCenter(initialLoc);
+	// 		console.log(initialLoc + 'CHECK THIS')
+	// 	});
+	// }
 	// var latlng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
 	var request = {
-		location : seattle,
+		location : initialLoc,
 		radius : '500',
 		types : searchTerms
 	}
@@ -97,9 +108,9 @@ var initMap = function() {
 function callback(results, status) {
   if (status === google.maps.places.PlacesServiceStatus.OK) {
     for (var i = 0; i < results.length; i++) {
-      createMarker(results[i]);
       searchResults.push(results[i].name);
       createLi(searchResults[i])
+      createMarker(results[i]);
     }
   }
 };
@@ -120,3 +131,7 @@ var createLi = function(text) {
 
 	$('#listed').append(html);
 }
+
+
+
+
