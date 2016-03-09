@@ -12,6 +12,9 @@ body {
 .navbar-nav>li>a {
     color: white !important;
 }
+.modal-content {
+    background-color: #626D75;
+}
 #myModal {
 top:10%;
 outline: none;
@@ -35,16 +38,20 @@ div.transbox h4 {
 	color: white;
 }
 div.transbox p {
-	font-size: 15px;
+    font-size: 15px;
     margin: 0;
     font-weight: bold;
     color: white;
 }
 div.transbox li p {
-	font-size: 12px;
+    font-size: 12px;
+}
+form#searchTerms {
+    color: white;
 }
 .results-list input {
-	display: inline-block;
+    display: inline-block;
+    font-size: 25px;
 }
 #map {
 	height: 500px;

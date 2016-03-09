@@ -30,7 +30,7 @@ router.post('/signUp', function(req, res) {
 		}).spread(function(user, created) {
 			if(created) {
 				console.log('CHECKCEHCK')
-				res.redirect('/');
+				res.redirect('/results');
 			} else {
 				console.log('User email exists error');
 				res.redirect('/auth/signUp');

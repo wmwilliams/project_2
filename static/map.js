@@ -69,7 +69,7 @@ function createMarker(place) {
  };
 
 function createLi(text) {
-    var html = '<li class="inline"><form method="POST" action="/results"><p>' + text + '</p><input type="hidden" name=title value="' + text + '"><button type="submit" class="btn btn-warning">Add to favorites!</button></form></li>';
+    var html = '<li class="inline"><form method="POST" action="/results"><p>' + text + '</p><input type="hidden" name=title value="' + text + '"><button type="submit" class="btn btn-default">Add to favorites!</button></form></li>';
 
     $('#listed').append(html);
 };
