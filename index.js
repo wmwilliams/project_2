@@ -49,7 +49,6 @@ app.get('/favorites', function(req, res) {
         return
     } else {
         db.user.findOne({where: {id: req.session.user}}).then(function(user) {
-            console.log('WHAT THE FUCK')
             user.getFavorites().then(function(favorites) {
                 res.render('favorites', {favorites: favorites})
             })
@@ -73,18 +72,11 @@ app.get('/favorites/:name', function(req, res) {
 //Search/Results/Maps page
 app.get('/results', function(req, res) {
     console.log('session users = '+req.session.user)
-    if(typeof req.session.user === 'undefined') {
-        res.redirect('/');
-        return
-    } else {
-        res.render('results');
-    }
+    res.render('results');
 });
 
-//FUCK EVERYTHING
 app.get('/edit/:id', function(req, res) {
     work = parseInt(req.params.id);
-    console.log("TTTTTTTTTTTTTTTTTTTTTTTTTTT" + work);
     db.favorite.findOne({where : {id : work}}).then(function(favorites) {
         res.render('edit', {favorites: favorites}).then(function(){
             db.destroy({where: {id: work}})
@@ -118,7 +110,6 @@ app.post('/edit', function(req, res) {
 
 //Takes location title and takes you to comment page
 app.post('/results', function(req, res) {
-    console.log('hello');
     console.log(req.body.title)
     res.render('notes', {title: req.body.title})
 });
