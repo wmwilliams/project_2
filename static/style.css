@@ -1,16 +1,16 @@
 body {
-	background-image: url("http://www.ralphlauren.com/graphics/media/polo/polobar/img/12182014_polo_bar_gallery_fs_05.jpg");
+	background-image: url("http://i.imgur.com/ftKJ5aE.jpg?1");
 	background-size: cover;
 }
 .navbar {
-	background: #844A25;
+	background: #626D75;
 	opacity: .8;
 	font-size: 15px;
 	font-weight: bold;
 	border: 3px solid black;
 }
-.navbar li {
-	color: black;
+.navbar-nav>li>a {
+    color: white !important;
 }
 #myModal {
 top:10%;
@@ -22,23 +22,23 @@ div.background {
 }
 
 div.transbox {
-    background-color: #844A25;
+    background-color: #626D75;
     border: 1px solid black;
-    opacity: 0.7;
+    opacity: 0.9;
 }
 div.transbox h3 {
 	font-weight: bold;
-	color: #FFE4C4;
+	color: white;
 }
 div.transbox h4 {
 	font-weight: bold;
-	color: #FFE4C4;
+	color: white;
 }
 div.transbox p {
 	font-size: 15px;
     margin: 0;
     font-weight: bold;
-    color: #FFE4C4;
+    color: white;
 }
 div.transbox li p {
 	font-size: 12px;

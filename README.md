@@ -17,7 +17,9 @@ TECH USED
 
 TO-INSTALL LOCALLY
 	clone this repo and do an npm install
-	then sequelize db:migrate i think
+	then sequelize db:migrate to create database
+	after that as long as you have Postgres running, run node index.js in the terminal
+	then site should be on your machine at localhost:3000
 
 
 

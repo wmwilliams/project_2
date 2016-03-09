@@ -110,8 +110,13 @@ app.post('/edit', function(req, res) {
 
 //Takes location title and takes you to comment page
 app.post('/results', function(req, res) {
-    console.log(req.body.title)
-    res.render('notes', {title: req.body.title})
+    if(typeof req.session.user === 'undefined') {
+        res.redirect('/results');
+        return
+    } else {
+        console.log(req.body.title)
+        res.render('notes', {title: req.body.title})
+    };
 });
 
 // Posts takes title and comments and adds it to db
