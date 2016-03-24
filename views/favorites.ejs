@@ -6,5 +6,12 @@
 <h2>Your favorite drinking spots!</h2>
 <% favorites.forEach(function(favorite) { %>
 		<h3 class='text-left'><%= favorite.name %></h3>
+<<<<<<< HEAD
 	    <p><%= favorite.comment %> </p><a href="/edit/<%= favorite.id %>" class="btn btn-default pull-left">Edit Comment</a><a href="/favorites/<%= favorite.name %>" class="btn btn-default delete-btn pull-right">Remove</a><br><hr>
 <% }); %>
+=======
+	    <p><%= favorite.comment %> </p><a href="/edit/<%= favorite.id %>" class="btn btn-primary pull-left">Edit Comment</a><a href="/favorites/<%= favorite.name %>" class="btn btn-primary delete-btn pull-right">Remove</a><br><hr>
+
+<% }); %>
+
+>>>>>>> 3076cd1053d58c35b24a42948ca0204b1e537cba

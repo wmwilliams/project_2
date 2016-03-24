@@ -8,6 +8,27 @@ var bodyParser = require('body-parser');
 
 router.use(bodyParser.urlencoded({extended: false}));
 
+<<<<<<< HEAD
+=======
+// router.use(session({
+// 	secret: 'super duper secret words',
+// 	resave: false,
+// 	saveUninitialized: true
+// }));
+
+// router.use(function(req, res, next) {
+// 	if(req.session.user) {
+// 		db.user.findById(req.session.user).then(function(user) {
+// 			req.currentUser = user;
+// 			next();
+// 		});
+// 	} else {
+// 		req.currentUser = false;
+// 		next();
+// 	}
+// })
+
+>>>>>>> 3076cd1053d58c35b24a42948ca0204b1e537cba
 router.get('/signup', function(req, res) {
 	res.render('auth/signUp');
 });
@@ -30,7 +51,11 @@ router.post('/signUp', function(req, res) {
 		}).spread(function(user, created) {
 			if(created) {
 				console.log('CHECKCEHCK')
+<<<<<<< HEAD
 				res.redirect('/results');
+=======
+				res.redirect('/');
+>>>>>>> 3076cd1053d58c35b24a42948ca0204b1e537cba
 			} else {
 				console.log('User email exists error');
 				res.redirect('/auth/signUp');
