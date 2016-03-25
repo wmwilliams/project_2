@@ -2,14 +2,17 @@
 
 
 <div class="background">
-  <div class="transbox">
-						<h1><%= currentUser  %></h1>
-  	<h3 class='text-center'>Hard day?</h3><h4 class='text-center'>Looking for a place to stop in and grab a quick drink on the way home?</h4><br>
-    <p class='text-center'>Welcome to drinkFinder. A website that offers the ability to find locations near you, and keep track of what places you like, and which ones you don't. Due to the nature of this site, you are required to make an account before accessing the rest of it. Oh, and you should probably be at least 21 years old too.</p><br>
-    <div class='text-center'>
-		<a href="/auth/signUp" class="btn btn-primary btn-large">Sign Up</a>
-		<a href="/auth/signIn" class="btn btn-primary btn-large">Sign In</a>
-	</div>
-		<br>
-  </div>
+    <div class="transbox col-xs-12 col-md-8 col-md-offset-2 col-lg-8 col-lg-offset-2">
+        <input type='hidden' val='<%= currentUser  %>'>
+        <h3 class='text-center'>Hard day?</h3>
+        <h4 class='text-center'>Looking for a place to stop in and grab a quick drink on the way home?</h4>
+        <br>
+        <p class='text-center'>Welcome to drinkFinder. A website that offers the ability to find locations near you, and keep track of what places you like, and which ones you don't. To take full advantage of the capability of this website, please make an account and sign in. Otherwise you can click continue below with limited functionality!</p><br>
+        <div class='text-center'>
+            <a href="/auth/signUp" class="btn btn-primary btn-large">Sign Up</a>
+            <a href="/auth/signIn" class="btn btn-primary btn-large">Sign In</a>
+            <a href="/results" class="btn btn-primary btn-large">Continue</a>
+        </div>
+        <br>
+    </div>
 </div>
