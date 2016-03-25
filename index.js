@@ -91,17 +91,15 @@ app.post('/edit', function(req, res) {
         }
     }).spread(function(user, created) {
         if(created) {
-            console.log("WHATS GOING ON");
             res.redirect('/favorites');
         } else {
-            console.log('FAILUUUUUUUURE');
             res.redirect('/');
         }
     }).catch(function(err) {
         if(err.message) {
             console.log(err);
         } else {
-            console.log('UNDEFINED I HOPE' + err)
+            console.log(err)
         }
         req.session.user = user.id;
         res.render('favorites');

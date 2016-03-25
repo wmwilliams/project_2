@@ -29,7 +29,6 @@ router.post('/signUp', function(req, res) {
 			}
 		}).spread(function(user, created) {
 			if(created) {
-				console.log('CHECKCEHCK')
 				res.redirect('/results');
 			} else {
 				console.log('User email exists error');
@@ -56,7 +55,7 @@ router.post('/signIn', function(req, res) {
 	db.user.authenticate(req.body.email, req.body.password, function(err, user) {
 		console.log('inside callback');
 		if(err) {
-			console.log('11111111111' + err);
+			console.log('err);
 			res.send(err);
 		} else if (user) {
 			req.session.user = user.id;
