@@ -55,7 +55,7 @@ router.post('/signIn', function(req, res) {
 	db.user.authenticate(req.body.email, req.body.password, function(err, user) {
 		console.log('inside callback');
 		if(err) {
-			console.log('err);
+			console.log(err);
 			res.send(err);
 		} else if (user) {
 			req.session.user = user.id;
